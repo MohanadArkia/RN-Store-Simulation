@@ -1,4 +1,4 @@
-import {ScrollView, View, Text, TouchableOpacity} from 'react-native';
+import {ScrollView, View, Text, TouchableOpacity, Button} from 'react-native';
 import React from 'react';
 
 import styles from '../styles/AppStyle';
@@ -24,25 +24,17 @@ const HomeScreen = props => {
     props.navigation.navigate(ScreenNames.About);
   };
 
-  const onCartIconPress = () => {
-    props.navigation.navigate(ScreenNames.ProductInfo);
+  const onCartPress = () => {
+    props.navigation.navigate(ScreenNames.MyCart);
   };
 
   return (
     <View style={styles.container}>
       <ScrollView>
         <TouchableOpacity style={NavStyle.container}>
-          <Text style={NavStyle.li} onPress={onContactPress}>
-            Contact
-          </Text>
-
-          <Text style={NavStyle.li} onPress={onAboutPress}>
-            About
-          </Text>
-
-          <Text style={NavStyle.li} onPress={onCartIconPress}>
-            My Cart
-          </Text>
+          <Button title="Contact" onPress={onContactPress} />
+          <Button title="About" onPress={onAboutPress} />
+          <Button title="My Cart" onPress={onCartPress} />
         </TouchableOpacity>
 
         <Text style={PcStyles.sectionTitle}>Computers Section</Text>
