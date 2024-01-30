@@ -19,7 +19,7 @@ const PcCard = props => {
       price: props.price,
       img: props.img,
     };
-    navigation.navigate(ScreenNames.MyCart, {pcCards: pcCards});
+    navigation.navigate(ScreenNames.ProductInfo, {pcCards: pcCards});
   };
 
   return (

@@ -1,19 +1,10 @@
-import {View} from 'react-native';
+import {Text, View} from 'react-native';
 import React from 'react';
-import ConsoleCard from '../components/ConsoleCard';
-import PcCard from '../components/PcCard';
-import MobileCard from '../components/MobileCard';
 
-const MyCartScreen = props => {
-  const pcItems = props.route.params.pcCards;
-  const consoleItems = props.route.params.consoleCards;
-  const mobileItems = props.route.params.mobileCards;
-
+const MyCartScreen = () => {
   return (
     <View>
-      <PcCard {...pcItems} />
-      <ConsoleCard {...consoleItems} />
-      <MobileCard {...mobileItems} />
+      <Text>My Cart</Text>
     </View>
   );
 };

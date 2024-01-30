@@ -16,7 +16,7 @@ const ConsoleCard = props => {
       price: props.price,
       img: props.img,
     };
-    navigation.navigate(ScreenNames.MyCart, {consoleCards: consoleCards});
+    navigation.navigate(ScreenNames.ProductInfo, {consoleCards: consoleCards});
   };
 
   return (

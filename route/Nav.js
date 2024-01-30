@@ -8,7 +8,7 @@ import ScreenNames from './ScreenNames';
 import HomeScreen from '../src/screens/HomeScreen';
 import ContactScreen from '../src/screens/ContactScreen';
 import AboutScreen from '../src/screens/AboutScreen';
-import MyCartScreen from '../src/screens/MyCartScreen';
+import ProductInfoScreen from '../src/screens/ProductInfoScreen';
 
 import icon from '../src/assets/images/images';
 
@@ -32,7 +32,10 @@ const Nav = () => {
         />
         <Stack.Screen name={ScreenNames.Contact} component={ContactScreen} />
         <Stack.Screen name={ScreenNames.About} component={AboutScreen} />
-        <Stack.Screen name={ScreenNames.MyCart} component={MyCartScreen} />
+        <Stack.Screen
+          name={ScreenNames.ProductInfo}
+          component={ProductInfoScreen}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

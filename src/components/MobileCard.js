@@ -18,7 +18,7 @@ const MobileCard = props => {
       price: props.price,
       img: props.img,
     };
-    navigation.navigate(ScreenNames.MyCart, {mobileCards: mobileCards});
+    navigation.navigate(ScreenNames.ProductInfo, {mobileCards: mobileCards});
   };
 
   return (

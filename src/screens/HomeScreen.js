@@ -25,7 +25,7 @@ const HomeScreen = props => {
   };
 
   const onCartIconPress = () => {
-    props.navigation.navigate(ScreenNames.MyCart);
+    props.navigation.navigate(ScreenNames.ProductInfo);
   };
 
   return (
