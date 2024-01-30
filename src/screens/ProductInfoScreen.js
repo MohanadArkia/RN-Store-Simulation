@@ -6,15 +6,12 @@ import PcCard from '../components/PcCard';
 import MobileCard from '../components/MobileCard';
 
 const ProductInfo = props => {
-  const pcItems = props.route.params.pcCards;
-  const consoleItems = props.route.params.consoleCards;
-  const mobileItems = props.route.params.mobileCards;
-
+  const {pcCards, consoleCards, mobileCards} = props.route.params;
   return (
     <View>
-      <PcCard {...pcItems} />
-      <ConsoleCard {...consoleItems} />
-      <MobileCard {...mobileItems} />
+      {pcCards && <PcCard {...pcCards} />}
+      {consoleCards && <ConsoleCard {...consoleCards} />}
+      {mobileCards && <MobileCard {...mobileCards} />}
     </View>
   );
 };
