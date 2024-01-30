@@ -7,7 +7,7 @@ import {useNavigation} from '@react-navigation/native';
 import ScreenNames from '../../route/ScreenNames';
 
 const MobileCard = props => {
-  const {brand, release, price} = props;
+  const {brand, release, price, hidePlus} = props;
 
   const navigation = useNavigation();
 
@@ -24,7 +24,7 @@ const MobileCard = props => {
   return (
     <TouchableOpacity onPress={onMobileCardPress}>
       <View style={style.card}>
-        <Text style={style.addProductPlus}>+</Text>
+        {!hidePlus && <Text style={style.addProductPlus}>+</Text>}
         <Text style={style.title}>{`Brand: ${brand}`}</Text>
         <Text style={style.text}>{`Release: ${release}`}</Text>
         <Text style={style.text}>{`Price: ${price}`}</Text>

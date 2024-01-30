@@ -5,8 +5,7 @@ import {useNavigation} from '@react-navigation/native';
 import ScreenNames from '../../route/ScreenNames';
 
 const PcCard = props => {
-  const {brand, cpu, ram, gpu, storage, price} = props;
-
+  const {brand, cpu, ram, gpu, storage, price, hidePlus} = props;
   const navigation = useNavigation();
 
   const onPcCardPress = () => {
@@ -25,7 +24,7 @@ const PcCard = props => {
   return (
     <TouchableOpacity onPress={onPcCardPress}>
       <View style={styles.card}>
-        <Text style={styles.addProductPlus}>+</Text>
+        {!hidePlus && <Text style={styles.addProductPlus}>+</Text>}
         <Text style={styles.title}>{`Brand: ${brand}`}</Text>
         <Text style={styles.text}>{`Cpu: ${cpu}`}</Text>
         <Text style={styles.text}>{`Ram: ${ram}`}</Text>

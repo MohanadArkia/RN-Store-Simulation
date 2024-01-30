@@ -5,7 +5,7 @@ import {useNavigation} from '@react-navigation/native';
 import ScreenNames from '../../route/ScreenNames';
 
 const ConsoleCard = props => {
-  const {brand, release, price} = props;
+  const {brand, release, price, hidePlus} = props;
 
   const navigation = useNavigation();
 
@@ -22,7 +22,7 @@ const ConsoleCard = props => {
   return (
     <TouchableOpacity onPress={onConsoleCardPress}>
       <View style={style.card}>
-        <Text style={style.addProductPlus}>+</Text>
+        {!hidePlus && <Text style={style.addProductPlus}>+</Text>}
         <Text style={style.title}>{`Brand: ${brand}`}</Text>
         <Text style={style.text}>{`Release: ${release}`}</Text>
         <Text style={style.text}>{`Price: ${price}`}</Text>

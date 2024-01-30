@@ -5,13 +5,16 @@ import ConsoleCard from '../components/ConsoleCard';
 import PcCard from '../components/PcCard';
 import MobileCard from '../components/MobileCard';
 
+import styles from '../styles/ProductInfoStyle';
+
 const ProductInfo = props => {
   const {pcCards, consoleCards, mobileCards} = props.route.params;
+
   return (
-    <View>
-      {pcCards && <PcCard {...pcCards} />}
-      {consoleCards && <ConsoleCard {...consoleCards} />}
-      {mobileCards && <MobileCard {...mobileCards} />}
+    <View style={styles.container}>
+      {pcCards && <PcCard {...pcCards} hidePlus={true} />}
+      {consoleCards && <ConsoleCard {...consoleCards} hidePlus={true} />}
+      {mobileCards && <MobileCard {...mobileCards} hidePlus={true} />}
     </View>
   );
 };
