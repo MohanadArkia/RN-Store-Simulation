@@ -12,9 +12,9 @@ const ProductInfo = props => {
 
   return (
     <View style={styles.container}>
-      {pcCards && <PcCard {...pcCards} hidePlus={true} />}
-      {consoleCards && <ConsoleCard {...consoleCards} hidePlus={true} />}
-      {mobileCards && <MobileCard {...mobileCards} hidePlus={true} />}
+      {pcCards && <PcCard {...pcCards} hideButton={true} />}
+      {consoleCards && <ConsoleCard {...consoleCards} hideButton={true} />}
+      {mobileCards && <MobileCard {...mobileCards} hideButton={true} />}
     </View>
   );
 };

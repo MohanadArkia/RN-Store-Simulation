@@ -1,11 +1,11 @@
-import {Text, View, Image, TouchableOpacity} from 'react-native';
+import {Text, View, Image, TouchableOpacity, Button} from 'react-native';
 import React from 'react';
 import styles from '../styles/PcSectionStyle';
 import {useNavigation} from '@react-navigation/native';
 import ScreenNames from '../../route/ScreenNames';
 
 const PcCard = props => {
-  const {brand, cpu, ram, gpu, storage, price, hidePlus} = props;
+  const {brand, cpu, ram, gpu, storage, price, hideButton} = props;
   const navigation = useNavigation();
 
   const onPcCardPress = () => {
@@ -21,10 +21,16 @@ const PcCard = props => {
     navigation.navigate(ScreenNames.ProductInfo, {pcCards: pcCards});
   };
 
+  const onAddToCartPress = () => {
+    console.log('Product is added to cart');
+  };
+
   return (
     <TouchableOpacity onPress={onPcCardPress}>
       <View style={styles.card}>
-        {!hidePlus && <Text style={styles.addProductPlus}>+</Text>}
+        {!hideButton && (
+          <Button title="Add to cart" onPress={onAddToCartPress} />
+        )}
         <Text style={styles.title}>{`Brand: ${brand}`}</Text>
         <Text style={styles.text}>{`Cpu: ${cpu}`}</Text>
         <Text style={styles.text}>{`Ram: ${ram}`}</Text>

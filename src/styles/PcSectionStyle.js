@@ -2,8 +2,8 @@ import {StyleSheet} from 'react-native';
 
 const pcCardStyle = StyleSheet.create({
   card: {
-    width: 300,
-    height: 190,
+    width: 320,
+    height: 230,
     borderWidth: 2,
     borderColor: '#ddd',
     borderRadius: 8,
@@ -39,7 +39,7 @@ const pcCardStyle = StyleSheet.create({
     width: 70,
     height: 70,
     resizeMode: 'center',
-    marginLeft: 140,
+    marginLeft: 200,
     marginTop: -150,
   },
 });

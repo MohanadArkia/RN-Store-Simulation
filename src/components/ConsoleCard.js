@@ -1,11 +1,11 @@
-import {Text, View, TouchableOpacity, Image} from 'react-native';
+import {Text, View, TouchableOpacity, Image, Button} from 'react-native';
 import React from 'react';
 import style from '../styles/ConsolesSectionStyle';
 import {useNavigation} from '@react-navigation/native';
 import ScreenNames from '../../route/ScreenNames';
 
 const ConsoleCard = props => {
-  const {brand, release, price, hidePlus} = props;
+  const {brand, release, price, hideButton} = props;
 
   const navigation = useNavigation();
 
@@ -18,11 +18,15 @@ const ConsoleCard = props => {
     };
     navigation.navigate(ScreenNames.ProductInfo, {consoleCards: consoleCards});
   };
-
+  const onAddToCartPress = () => {
+    console.log('Product is added to cart');
+  };
   return (
     <TouchableOpacity onPress={onConsoleCardPress}>
       <View style={style.card}>
-        {!hidePlus && <Text style={style.addProductPlus}>+</Text>}
+        {!hideButton && (
+          <Button title="Add to cart" onPress={onAddToCartPress} />
+        )}
         <Text style={style.title}>{`Brand: ${brand}`}</Text>
         <Text style={style.text}>{`Release: ${release}`}</Text>
         <Text style={style.text}>{`Price: ${price}`}</Text>
