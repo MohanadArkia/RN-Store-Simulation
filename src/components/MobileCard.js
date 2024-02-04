@@ -1,28 +1,31 @@
 import {Text, View, Image, TouchableOpacity, Button} from 'react-native';
-import React from 'react';
+import React, {useContext} from 'react';
 
 import style from '../styles/MobileSectionStyle';
 
 import {useNavigation} from '@react-navigation/native';
 import ScreenNames from '../../route/ScreenNames';
+import MyContext from '../store/MyContext';
 
 const MobileCard = props => {
-  const {brand, release, price, hideButton} = props;
+  const {brand, release, price, img, hideButton} = props;
 
   const navigation = useNavigation();
+  const {setCart} = useContext(MyContext);
+
+  const mobileCards = {
+    brand: brand,
+    release: release,
+    price: price,
+    img: img,
+  };
 
   const onMobileCardPress = () => {
-    const mobileCards = {
-      brand: props.brand,
-      release: props.release,
-      price: props.price,
-      img: props.img,
-    };
     navigation.navigate(ScreenNames.ProductInfo, {mobileCards: mobileCards});
   };
 
   const onAddToCartPress = () => {
-    console.log('Product is added to cart');
+    setCart(prevCart => [...prevCart, mobileCards]);
   };
 
   return (

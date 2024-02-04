@@ -3,13 +3,16 @@ import {View} from 'react-native';
 
 import style from './src/styles/AppStyle';
 
-import Nav from './route/Nav';
+import MainNavigation from './route/MainNavigation';
+import MyProvider from './src/store/MyProvider';
 
 const App = () => {
   return (
-    <View style={style.container}>
-      <Nav />
-    </View>
+    <MyProvider>
+      <View style={style.container}>
+        <MainNavigation />
+      </View>
+    </MyProvider>
   );
 };
 

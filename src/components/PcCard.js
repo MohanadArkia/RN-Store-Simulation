@@ -1,28 +1,34 @@
 import {Text, View, Image, TouchableOpacity, Button} from 'react-native';
-import React from 'react';
-import styles from '../styles/PcSectionStyle';
+import React, {useContext} from 'react';
 import {useNavigation} from '@react-navigation/native';
+
+import styles from '../styles/PcSectionStyle';
+
 import ScreenNames from '../../route/ScreenNames';
 
+import MyContext from '../store/MyContext';
+
 const PcCard = props => {
-  const {brand, cpu, ram, gpu, storage, price, hideButton} = props;
+  const {brand, cpu, ram, gpu, storage, price, img, hideButton} = props;
   const navigation = useNavigation();
+  const {setCart} = useContext(MyContext);
+
+  const pcCards = {
+    brand: brand,
+    cpu: cpu,
+    ram: ram,
+    gpu: gpu,
+    storage: storage,
+    price: price,
+    img: img,
+  };
 
   const onPcCardPress = () => {
-    const pcCards = {
-      brand: props.brand,
-      cpu: props.cpu,
-      ram: props.ram,
-      gpu: props.gpu,
-      storage: props.storage,
-      price: props.price,
-      img: props.img,
-    };
     navigation.navigate(ScreenNames.ProductInfo, {pcCards: pcCards});
   };
 
   const onAddToCartPress = () => {
-    console.log('Product is added to cart');
+    setCart(prevCart => [...prevCart, pcCards]);
   };
 
   return (

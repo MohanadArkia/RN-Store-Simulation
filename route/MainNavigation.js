@@ -1,5 +1,4 @@
 import React from 'react';
-import {View, Text, Image, TouchableOpacity} from 'react-native';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
@@ -11,7 +10,7 @@ import AboutScreen from '../src/screens/AboutScreen';
 import ProductInfoScreen from '../src/screens/ProductInfoScreen';
 import MyCartScreen from '../src/screens/MyCartScreen';
 
-const Nav = () => {
+const MainNavigation = () => {
   const Stack = createNativeStackNavigator();
 
   return (
@@ -30,4 +29,4 @@ const Nav = () => {
   );
 };
 
-export default Nav;
+export default MainNavigation;

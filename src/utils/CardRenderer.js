@@ -9,10 +9,10 @@ import {Computers} from '../res/PcData';
 import {Consoles} from '../res/ConsoleData';
 import {Mobile} from '../res/MobileData';
 
-export const renderComputers = () => {
-  const computersSpecs = Computers.map(comp => {
+export const renderComputers = props => {
+  const computersSpecs = Computers.map((comp, index) => {
     return (
-      <View>
+      <View key={index}>
         <PcCard
           brand={comp.brand}
           cpu={comp.cpu}
@@ -29,9 +29,9 @@ export const renderComputers = () => {
 };
 
 export const renderConsoles = () => {
-  const consoles = Consoles.map(con => {
+  const consoles = Consoles.map((con, index) => {
     return (
-      <View>
+      <View key={index}>
         <ConsoleCard
           brand={con.brand}
           release={con.release}
@@ -45,9 +45,9 @@ export const renderConsoles = () => {
 };
 
 export const renderMobiles = () => {
-  const mobiles = Mobile.map(mob => {
+  const mobiles = Mobile.map((mob, index) => {
     return (
-      <View>
+      <View key={index}>
         <MobileCard
           brand={mob.brand}
           release={mob.release}
