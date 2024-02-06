@@ -14,11 +14,13 @@ const mobileCardStyle = StyleSheet.create({
 
   title: {
     fontSize: 20,
+    color: '#000000',
     fontWeight: 'bold',
     marginBottom: 8,
   },
 
   text: {
+    fontWeight: '500',
     color: '#000000',
     fontSize: 18,
   },

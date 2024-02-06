@@ -14,12 +14,14 @@ const consoleCardStyle = StyleSheet.create({
 
   title: {
     fontSize: 20,
+    color: '#000000',
     fontWeight: 'bold',
     marginBottom: 8,
   },
 
   text: {
     color: '#000000',
+    fontWeight: '500',
     fontSize: 18,
   },
 

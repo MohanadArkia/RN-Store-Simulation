@@ -1,5 +1,12 @@
-import {Image, ScrollView, Text, View} from 'react-native';
-import React, {useContext} from 'react';
+import {
+  Button,
+  Image,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from 'react-native';
+import React, {useContext, useState} from 'react';
 
 import MyContext from '../store/MyContext';
 
@@ -7,6 +14,61 @@ import styles from '../styles/MyCartStyle';
 
 const MyCartScreen = () => {
   const {cart} = useContext(MyContext);
+  const [quantities, setQuantities] = useState({});
+  const [price, setPrice] = useState(
+    cart.reduce((acc, item) => ({...acc, [item.id]: item.price}), {}),
+  );
+
+  const quantityController = (item, increment) => {
+    const currentQuantity = quantities[item.id] || 0;
+
+    const newQuantity =
+      currentQuantity === 0
+        ? 1
+        : increment
+          ? currentQuantity + 1
+          : Math.max(currentQuantity - 1, 1);
+
+    setQuantities(prevQuantities => ({
+      ...prevQuantities,
+      [item.id]: newQuantity,
+    }));
+
+    setPrice(prevPrices => ({
+      ...prevPrices,
+      [item.id]: newQuantity * item.price,
+    }));
+  };
+
+  const renderQuantityControls = item => (
+    <View style={styles.quantityContainer}>
+      <TouchableOpacity onPress={() => quantityController(item, true)}>
+        <Text style={styles.quantityButton}>+</Text>
+      </TouchableOpacity>
+      <Text style={styles.quantityText}>{quantities[item.id] || 0}</Text>
+      <TouchableOpacity onPress={() => quantityController(item, false)}>
+        <Text style={styles.quantityButton}>-</Text>
+      </TouchableOpacity>
+    </View>
+  );
+
+  const renderPriceAndPayButton = () => {
+    if (cart.length === 0) {
+      return null;
+    }
+    const totalPrice = Object.values(price).reduce(
+      (acc, itemPrice) => acc + itemPrice,
+      0,
+    );
+    return (
+      <View style={styles.priceAndPayButtonContainer}>
+        <Text style={styles.priceText}>Total price: {totalPrice}</Text>
+        <TouchableOpacity style={styles.payButton}>
+          <Button title="Pay" />
+        </TouchableOpacity>
+      </View>
+    );
+  };
 
   const renderItemsInMyCart = () => {
     return (
@@ -35,6 +97,7 @@ const MyCartScreen = () => {
               Price: ${item.price}`
                     : ''}
               </Text>
+              <Text>{renderQuantityControls(item)}</Text>
             </View>
           ))
         )}
@@ -44,7 +107,10 @@ const MyCartScreen = () => {
 
   return (
     <ScrollView>
-      <View style={styles.container}>{renderItemsInMyCart()}</View>
+      <View style={styles.container}>
+        {renderItemsInMyCart()}
+        {renderPriceAndPayButton()}
+      </View>
     </ScrollView>
   );
 };
