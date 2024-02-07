@@ -14,7 +14,15 @@ import styles from '../styles/MyCartStyle';
 
 const MyCartScreen = () => {
   const {cart} = useContext(MyContext);
-  const [quantities, setQuantities] = useState({});
+
+  const [quantities, setQuantities] = useState(() => {
+    const initialQuantities = {};
+    cart.forEach(item => {
+      initialQuantities[item.id] = 1;
+    });
+    return initialQuantities;
+  });
+
   const [price, setPrice] = useState(
     cart.reduce((acc, item) => ({...acc, [item.id]: item.price}), {}),
   );
@@ -22,12 +30,9 @@ const MyCartScreen = () => {
   const quantityController = (item, increment) => {
     const currentQuantity = quantities[item.id] || 0;
 
-    const newQuantity =
-      currentQuantity === 0
-        ? 1
-        : increment
-          ? currentQuantity + 1
-          : Math.max(currentQuantity - 1, 1);
+    const newQuantity = increment
+      ? currentQuantity + 1
+      : Math.max(currentQuantity - 1, 1);
 
     setQuantities(prevQuantities => ({
       ...prevQuantities,
@@ -84,17 +89,17 @@ const MyCartScreen = () => {
               <Text style={styles.txt} key={index}>
                 {item.cpu
                   ? `
-              Brand: ${item.brand}
-              Cpu: ${item.cpu}
-              Ram: ${item.ram}
-              Gpu: ${item.gpu}
-              Storage: ${item.storage}
-              Price: ${item.price}`
+                        Brand: ${item.brand}
+                        Cpu: ${item.cpu}
+                        Ram: ${item.ram}
+                        Gpu: ${item.gpu}
+                        Storage: ${item.storage}
+                        Price: ${item.price}`
                   : item.release
                     ? `
-              Brand: ${item.brand}
-              Release: ${item.release}
-              Price: ${item.price}`
+                        Brand: ${item.brand}
+                        Release: ${item.release}
+                        Price: ${item.price}`
                     : ''}
               </Text>
               <Text>{renderQuantityControls(item)}</Text>
