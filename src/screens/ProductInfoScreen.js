@@ -9,18 +9,9 @@ const ProductInfo = props => {
 
   return (
     <View style={styles.container}>
-      {pcCardsAsText && (
-        <Text style={styles.productSpecs}>{pcCardsAsText}</Text>
-      )}
-
-      {consoleCardsAsText && (
-        <Text style={styles.productSpecs}>{consoleCardsAsText}</Text>
-      )}
-
-      {mobileCardsAsText && (
-        <Text style={styles.productSpecs}>{mobileCardsAsText}</Text>
-      )}
-
+      <Text style={styles.productSpecs}>{pcCardsAsText}</Text>
+      <Text style={styles.productSpecs}>{consoleCardsAsText}</Text>
+      <Text style={styles.productSpecs}>{mobileCardsAsText}</Text>
       {img && <Image style={styles.img} source={img} />}
     </View>
   );
