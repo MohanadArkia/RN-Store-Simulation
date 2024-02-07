@@ -21,7 +21,15 @@ const MobileCard = props => {
   };
 
   const onMobileCardPress = () => {
-    navigation.navigate(ScreenNames.ProductInfo, {mobileCards: mobileCards});
+    const mobileCardsAsText = `
+        Brand: ${brand}
+        Release: ${release}
+        Price: ${price}
+    `;
+    navigation.navigate(ScreenNames.ProductInfo, {
+      mobileCardsAsText: mobileCardsAsText,
+      img: img,
+    });
   };
 
   const onAddToCartPress = () => {

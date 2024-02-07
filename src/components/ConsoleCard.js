@@ -19,7 +19,15 @@ const ConsoleCard = props => {
   };
 
   const onConsoleCardPress = () => {
-    navigation.navigate(ScreenNames.ProductInfo, {consoleCards: consoleCards});
+    const consoleCardsAsText = `
+        Brand: ${brand}
+        release: ${release}
+        price: ${price}
+    `;
+    navigation.navigate(ScreenNames.ProductInfo, {
+      consoleCardsAsText: consoleCardsAsText,
+      img: img,
+    });
   };
 
   const onAddToCartPress = () => {

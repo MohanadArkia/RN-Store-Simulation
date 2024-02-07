@@ -9,7 +9,7 @@ import ScreenNames from '../../route/ScreenNames';
 import MyContext from '../store/MyContext';
 
 const PcCard = props => {
-  const {brand, cpu, ram, gpu, storage, price, img, hideButton} = props;
+  const {brand, cpu, ram, gpu, storage, price, img} = props;
   const navigation = useNavigation();
   const {setCart} = useContext(MyContext);
 
@@ -24,7 +24,18 @@ const PcCard = props => {
   };
 
   const onPcCardPress = () => {
-    navigation.navigate(ScreenNames.ProductInfo, {pcCards: pcCards});
+    const pcCardsAsText = `
+      Brand: ${pcCards.brand}
+      Cpu: ${pcCards.cpu}
+      Ram: ${pcCards.ram}
+      Gpu: ${pcCards.gpu}
+      Storage: ${pcCards.storage}
+      Price: ${pcCards.price}
+   `;
+    navigation.navigate(ScreenNames.ProductInfo, {
+      pcCardsAsText: pcCardsAsText,
+      img: img,
+    });
   };
 
   const onAddToCartPress = () => {
@@ -34,9 +45,7 @@ const PcCard = props => {
   return (
     <TouchableOpacity onPress={onPcCardPress}>
       <View style={styles.card}>
-        {!hideButton && (
-          <Button title="Add to cart" onPress={onAddToCartPress} />
-        )}
+        <Button title="Add to cart" onPress={onAddToCartPress} />
         <Text style={styles.title}>{`Brand: ${brand}`}</Text>
         <Text style={styles.text}>{`Cpu: ${cpu}`}</Text>
         <Text style={styles.text}>{`Ram: ${ram}`}</Text>
