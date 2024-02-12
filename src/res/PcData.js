@@ -9,6 +9,7 @@ export const Computers = [
     storage: 'SSD',
     price: 2999,
     img: Images.hp(),
+    id: Math.random() * 1000,
   },
 
   {
@@ -19,6 +20,7 @@ export const Computers = [
     storage: 'HDD',
     price: 5999,
     img: Images.dell(),
+    id: Math.random() * 1000,
   },
 
   {
@@ -29,6 +31,7 @@ export const Computers = [
     storage: 'SSD',
     price: 2500,
     img: Images.lenovo(),
+    id: Math.random() * 1000,
   },
 
   {
@@ -39,6 +42,7 @@ export const Computers = [
     storage: 'SSD',
     price: 6799,
     img: Images.acer(),
+    id: Math.random() * 1000,
   },
 
   {
@@ -49,5 +53,6 @@ export const Computers = [
     storage: 'HDD',
     price: 300,
     img: Images.asus(),
+    id: Math.random() * 1000,
   },
 ];

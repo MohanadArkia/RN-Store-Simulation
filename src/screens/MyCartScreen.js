@@ -7,9 +7,7 @@ import {
   View,
 } from 'react-native';
 import React, {useContext, useState} from 'react';
-
 import MyContext from '../store/MyContext';
-
 import styles from '../styles/MyCartStyle';
 
 const MyCartScreen = () => {
@@ -17,8 +15,8 @@ const MyCartScreen = () => {
 
   const [quantities, setQuantities] = useState(() => {
     const initialQuantities = {};
-    cart.forEach(item => {
-      initialQuantities[item.id] = 1;
+    cart.forEach(initQuantity => {
+      initialQuantities[initQuantity.id] = 1;
     });
     return initialQuantities;
   });
@@ -61,13 +59,17 @@ const MyCartScreen = () => {
     if (cart.length === 0) {
       return null;
     }
+
     const totalPrice = Object.values(price).reduce(
       (acc, itemPrice) => acc + itemPrice,
       0,
     );
+
     return (
       <View style={styles.priceAndPayButtonContainer}>
-        <Text style={styles.priceText}>Total price: {totalPrice}</Text>
+        <Text style={styles.priceText}>
+          Total price: {totalPrice.toFixed(2)}
+        </Text>
         <TouchableOpacity style={styles.payButton}>
           <Button title="Pay" />
         </TouchableOpacity>

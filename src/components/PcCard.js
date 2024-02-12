@@ -8,10 +8,12 @@ import ScreenNames from '../../route/ScreenNames';
 
 import MyContext from '../store/MyContext';
 
+import {quantities, setQuantities} from '../screens/MyCartScreen';
+
 const PcCard = props => {
-  const {brand, cpu, ram, gpu, storage, price, img} = props;
+  const {brand, cpu, ram, gpu, storage, price, img, id} = props;
   const navigation = useNavigation();
-  const {setCart} = useContext(MyContext);
+  const {cart, setCart} = useContext(MyContext);
 
   const pcCards = {
     brand: brand,
@@ -21,6 +23,7 @@ const PcCard = props => {
     storage: storage,
     price: price,
     img: img,
+    id: id,
   };
 
   const onPcCardPress = () => {
@@ -38,8 +41,15 @@ const PcCard = props => {
     });
   };
 
+  const checkIfExist = () => {
+    const isExist = cart.find(product => product.id === pcCards.id);
+    return !!isExist;
+  };
+
   const onAddToCartPress = () => {
-    setCart(prevCart => [...prevCart, pcCards]);
+    checkIfExist()
+      ? console.log('Product already exist')
+      : setCart(prevCart => [...prevCart, pcCards]);
   };
 
   return (
@@ -52,7 +62,7 @@ const PcCard = props => {
         <Text style={styles.text}>{`Gpu: ${gpu}`}</Text>
         <Text style={styles.text}>{`Storage: ${storage}`}</Text>
         <Text style={styles.text}>{`Price: ${price}`}</Text>
-        <Image style={styles.pcImage} source={props.img} />
+        <Image style={styles.pcImage} source={img} />
       </View>
     </TouchableOpacity>
   );

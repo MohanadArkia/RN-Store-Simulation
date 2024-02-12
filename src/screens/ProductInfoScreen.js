@@ -12,7 +12,7 @@ const ProductInfo = props => {
       <Text style={styles.productSpecs}>{pcCardsAsText}</Text>
       <Text style={styles.productSpecs}>{consoleCardsAsText}</Text>
       <Text style={styles.productSpecs}>{mobileCardsAsText}</Text>
-      {img && <Image style={styles.img} source={img} />}
+      <Image style={styles.img} source={img} />
     </View>
   );
 };

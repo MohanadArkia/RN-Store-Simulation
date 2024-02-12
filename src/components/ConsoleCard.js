@@ -6,8 +6,8 @@ import ScreenNames from '../../route/ScreenNames';
 import MyContext from '../store/MyContext';
 
 const ConsoleCard = props => {
-  const {brand, release, price, img, hideButton} = props;
-  const {setCart} = useContext(MyContext);
+  const {brand, release, price, img, id} = props;
+  const {cart, setCart} = useContext(MyContext);
 
   const navigation = useNavigation();
 
@@ -16,6 +16,7 @@ const ConsoleCard = props => {
     release: release,
     price: price,
     img: img,
+    id: id,
   };
 
   const onConsoleCardPress = () => {
@@ -30,16 +31,22 @@ const ConsoleCard = props => {
     });
   };
 
+  const checkIfExist = () => {
+    const isExist = cart.find(product => product.id === consoleCards.id);
+    return !!isExist;
+  };
+
   const onAddToCartPress = () => {
-    setCart(prevCart => [...prevCart, consoleCards]);
+    checkIfExist()
+      ? console.log('Product is already exist')
+      : setCart(prevCart => [...prevCart, consoleCards]);
+    console.log(cart);
   };
 
   return (
     <TouchableOpacity onPress={onConsoleCardPress}>
       <View style={style.card}>
-        {!hideButton && (
-          <Button title="Add to cart" onPress={onAddToCartPress} />
-        )}
+        <Button title="Add to cart" onPress={onAddToCartPress} />
         <Text style={style.title}>{`Brand: ${brand}`}</Text>
         <Text style={style.text}>{`Release: ${release}`}</Text>
         <Text style={style.text}>{`Price: ${price}`}</Text>

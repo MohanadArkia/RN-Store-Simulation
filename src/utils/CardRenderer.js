@@ -9,19 +9,11 @@ import {Computers} from '../res/PcData';
 import {Consoles} from '../res/ConsoleData';
 import {Mobile} from '../res/MobileData';
 
-export const renderComputers = props => {
+export const renderComputers = () => {
   const computersSpecs = Computers.map((comp, index) => {
     return (
       <View key={index}>
-        <PcCard
-          brand={comp.brand}
-          cpu={comp.cpu}
-          ram={comp.ram}
-          gpu={comp.gpu}
-          storage={comp.storage}
-          price={comp.price}
-          img={comp.img}
-        />
+        <PcCard {...comp} />
       </View>
     );
   });
@@ -32,12 +24,7 @@ export const renderConsoles = () => {
   const consoles = Consoles.map((con, index) => {
     return (
       <View key={index}>
-        <ConsoleCard
-          brand={con.brand}
-          release={con.release}
-          price={con.price}
-          img={con.img}
-        />
+        <ConsoleCard {...con} />
       </View>
     );
   });
@@ -48,12 +35,7 @@ export const renderMobiles = () => {
   const mobiles = Mobile.map((mob, index) => {
     return (
       <View key={index}>
-        <MobileCard
-          brand={mob.brand}
-          release={mob.release}
-          price={mob.price}
-          img={mob.img}
-        />
+        <MobileCard {...mob} />
       </View>
     );
   });
