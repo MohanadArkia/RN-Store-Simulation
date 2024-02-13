@@ -11,8 +11,10 @@ import React, {useContext} from 'react';
 import styles from '../styles/MyCartStyle';
 import MyContext from '../store/MyContext';
 
+import Images from '../assets/images/images';
+
 const MyCartScreen = () => {
-  const {cart, quantity, setQuantity} = useContext(MyContext);
+  const {cart, setCart, quantity, setQuantity} = useContext(MyContext);
 
   const incrementQuantity = () => {
     setQuantity(prevQuantity => prevQuantity + 1);
@@ -30,6 +32,10 @@ const MyCartScreen = () => {
       totalPrice += item.price * quantity;
     });
     return totalPrice;
+  };
+
+  const removeProduct = index => {
+    setCart(cart.filter((_, i) => i !== index));
   };
 
   const renderQuantityControls = () => (
@@ -72,6 +78,12 @@ const MyCartScreen = () => {
                     : ''}
               </Text>
               <Text>{renderQuantityControls()}</Text>
+              <TouchableOpacity onPress={() => removeProduct(index)}>
+                <Image
+                  style={styles.trashCanIcon}
+                  source={Images.trashIcon()}
+                />
+              </TouchableOpacity>
             </View>
           ))
         )}
@@ -87,7 +99,7 @@ const MyCartScreen = () => {
     return (
       <View style={styles.priceAndPayButtonContainer}>
         <Text style={styles.priceText}>
-          Total price: {calculateTotalPrice()}
+          Total price: {calculateTotalPrice().toFixed(2)}
         </Text>
         <TouchableOpacity style={styles.payButton}>
           <Button title="Pay" />

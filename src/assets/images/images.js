@@ -25,6 +25,7 @@ const Images = {
   iPhone7: () => require('./mobiles/iphone/iphone7.png'),
 
   shoppingCart: () => require('./icons/shopping_cart.jpg'),
+  trashIcon: () => require('./icons/trash_icon.png'),
 };
 
 export default Images;

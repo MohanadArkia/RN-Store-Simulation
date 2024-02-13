@@ -38,7 +38,7 @@ const MyCartStyle = StyleSheet.create({
     width: 80,
     height: 80,
     resizeMode: 'center',
-    marginRight: -70,
+    marginRight: -95,
   },
 
   emptyCartText: {
@@ -69,6 +69,13 @@ const MyCartStyle = StyleSheet.create({
   payButton: {
     width: '50%',
     marginBottom: 25,
+  },
+
+  trashCanIcon: {
+    width: 30,
+    height: 30,
+    resizeMode: 'contain',
+    marginLeft: 5,
   },
 });
 
