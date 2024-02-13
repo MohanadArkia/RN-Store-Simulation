@@ -11,7 +11,7 @@ const MobileCard = props => {
   const {brand, release, price, img, id} = props;
 
   const navigation = useNavigation();
-  const {cart, setCart} = useContext(MyContext);
+  const {cart, setCart, setQuantity} = useContext(MyContext);
 
   const mobileCards = {
     brand: brand,
@@ -40,7 +40,7 @@ const MobileCard = props => {
 
   const onAddToCartPress = () => {
     checkIfExist()
-      ? console.log('already exist')
+      ? setQuantity(prevQuantity => prevQuantity + 1)
       : setCart(prevCart => [...prevCart, mobileCards]);
   };
 

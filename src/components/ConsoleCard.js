@@ -7,9 +7,9 @@ import MyContext from '../store/MyContext';
 
 const ConsoleCard = props => {
   const {brand, release, price, img, id} = props;
-  const {cart, setCart} = useContext(MyContext);
 
   const navigation = useNavigation();
+  const {cart, setCart, setQuantity} = useContext(MyContext);
 
   const consoleCards = {
     brand: brand,
@@ -38,9 +38,8 @@ const ConsoleCard = props => {
 
   const onAddToCartPress = () => {
     checkIfExist()
-      ? console.log('Product is already exist')
+      ? setQuantity(prevQuantity => prevQuantity + 1)
       : setCart(prevCart => [...prevCart, consoleCards]);
-    console.log(cart);
   };
 
   return (

@@ -6,76 +6,43 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import React, {useContext, useState} from 'react';
-import MyContext from '../store/MyContext';
+
+import React, {useContext} from 'react';
 import styles from '../styles/MyCartStyle';
+import MyContext from '../store/MyContext';
 
 const MyCartScreen = () => {
-  const {cart} = useContext(MyContext);
+  const {cart, quantity, setQuantity} = useContext(MyContext);
 
-  const [quantities, setQuantities] = useState(() => {
-    const initialQuantities = {};
-    cart.forEach(initQuantity => {
-      initialQuantities[initQuantity.id] = 1;
-    });
-    return initialQuantities;
-  });
-
-  const [price, setPrice] = useState(
-    cart.reduce((acc, item) => ({...acc, [item.id]: item.price}), {}),
-  );
-
-  const quantityController = (item, increment) => {
-    const currentQuantity = quantities[item.id] || 0;
-
-    const newQuantity = increment
-      ? currentQuantity + 1
-      : Math.max(currentQuantity - 1, 1);
-
-    setQuantities(prevQuantities => ({
-      ...prevQuantities,
-      [item.id]: newQuantity,
-    }));
-
-    setPrice(prevPrices => ({
-      ...prevPrices,
-      [item.id]: newQuantity * item.price,
-    }));
+  const incrementQuantity = () => {
+    setQuantity(prevQuantity => prevQuantity + 1);
   };
 
-  const renderQuantityControls = item => (
+  const decrementQuantity = () => {
+    quantity === 1
+      ? setQuantity(1)
+      : setQuantity(prevQuantity => prevQuantity - 1);
+  };
+
+  const calculateTotalPrice = () => {
+    let totalPrice = 0;
+    cart.forEach(item => {
+      totalPrice += item.price * quantity;
+    });
+    return totalPrice;
+  };
+
+  const renderQuantityControls = () => (
     <View style={styles.quantityContainer}>
-      <TouchableOpacity onPress={() => quantityController(item, true)}>
+      <TouchableOpacity onPress={incrementQuantity}>
         <Text style={styles.quantityButton}>+</Text>
       </TouchableOpacity>
-      <Text style={styles.quantityText}>{quantities[item.id] || 0}</Text>
-      <TouchableOpacity onPress={() => quantityController(item, false)}>
+      <Text style={styles.quantityText}>{quantity}</Text>
+      <TouchableOpacity onPress={decrementQuantity}>
         <Text style={styles.quantityButton}>-</Text>
       </TouchableOpacity>
     </View>
   );
-
-  const renderPriceAndPayButton = () => {
-    if (cart.length === 0) {
-      return null;
-    }
-
-    const totalPrice = Object.values(price).reduce(
-      (acc, itemPrice) => acc + itemPrice,
-      0,
-    );
-
-    return (
-      <View style={styles.priceAndPayButtonContainer}>
-        <Text style={styles.priceText}>
-          Total price: {totalPrice.toFixed(2)}
-        </Text>
-        <TouchableOpacity style={styles.payButton}>
-          <Button title="Pay" />
-        </TouchableOpacity>
-      </View>
-    );
-  };
 
   const renderItemsInMyCart = () => {
     return (
@@ -104,10 +71,27 @@ const MyCartScreen = () => {
                         Price: ${item.price}`
                     : ''}
               </Text>
-              <Text>{renderQuantityControls(item)}</Text>
+              <Text>{renderQuantityControls()}</Text>
             </View>
           ))
         )}
+      </View>
+    );
+  };
+
+  const renderPriceAndPayButton = () => {
+    if (cart.length === 0) {
+      return null;
+    }
+
+    return (
+      <View style={styles.priceAndPayButtonContainer}>
+        <Text style={styles.priceText}>
+          Total price: {calculateTotalPrice()}
+        </Text>
+        <TouchableOpacity style={styles.payButton}>
+          <Button title="Pay" />
+        </TouchableOpacity>
       </View>
     );
   };

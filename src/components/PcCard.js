@@ -5,15 +5,12 @@ import {useNavigation} from '@react-navigation/native';
 import styles from '../styles/PcSectionStyle';
 
 import ScreenNames from '../../route/ScreenNames';
-
 import MyContext from '../store/MyContext';
-
-import {quantities, setQuantities} from '../screens/MyCartScreen';
 
 const PcCard = props => {
   const {brand, cpu, ram, gpu, storage, price, img, id} = props;
   const navigation = useNavigation();
-  const {cart, setCart} = useContext(MyContext);
+  const {cart, setCart, setQuantity} = useContext(MyContext);
 
   const pcCards = {
     brand: brand,
@@ -48,7 +45,7 @@ const PcCard = props => {
 
   const onAddToCartPress = () => {
     checkIfExist()
-      ? console.log('Product already exist')
+      ? setQuantity(prevQuantity => prevQuantity + 1)
       : setCart(prevCart => [...prevCart, pcCards]);
   };
 
