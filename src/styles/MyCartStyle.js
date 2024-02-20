@@ -38,7 +38,6 @@ const MyCartStyle = StyleSheet.create({
     width: 80,
     height: 80,
     resizeMode: 'center',
-    marginRight: -95,
   },
 
   emptyCartText: {

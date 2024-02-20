@@ -10,6 +10,7 @@ export const Computers = [
     price: 2999,
     img: Images.hp(),
     id: Math.random() * 1000,
+    quantity: 1,
   },
 
   {
@@ -21,6 +22,7 @@ export const Computers = [
     price: 5999,
     img: Images.dell(),
     id: Math.random() * 1000,
+    quantity: 1,
   },
 
   {
@@ -32,6 +34,7 @@ export const Computers = [
     price: 2500,
     img: Images.lenovo(),
     id: Math.random() * 1000,
+    quantity: 1,
   },
 
   {
@@ -43,6 +46,7 @@ export const Computers = [
     price: 6799,
     img: Images.acer(),
     id: Math.random() * 1000,
+    quantity: 1,
   },
 
   {
@@ -54,5 +58,6 @@ export const Computers = [
     price: 300,
     img: Images.asus(),
     id: Math.random() * 1000,
+    quantity: 1,
   },
 ];

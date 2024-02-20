@@ -3,10 +3,9 @@ import MyContext from './MyContext';
 
 const MyProvider = props => {
   const [cart, setCart] = useState([]);
-  const [quantity, setQuantity] = useState(1);
 
   return (
-    <MyContext.Provider value={{cart, setCart, quantity, setQuantity}}>
+    <MyContext.Provider value={{cart, setCart}}>
       {props.children}
     </MyContext.Provider>
   );

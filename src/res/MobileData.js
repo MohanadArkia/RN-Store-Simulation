@@ -7,6 +7,7 @@ export const Mobile = [
     price: 2599,
     img: Images.iPhone4(),
     id: Math.random() * 1000,
+    quantity: 1,
   },
 
   {
@@ -15,6 +16,7 @@ export const Mobile = [
     price: 2899,
     img: Images.iPhone5(),
     id: Math.random() * 1000,
+    quantity: 1,
   },
 
   {
@@ -23,6 +25,7 @@ export const Mobile = [
     price: 3200,
     img: Images.iPhone6(),
     id: Math.random() * 1000,
+    quantity: 1,
   },
 
   {
@@ -31,5 +34,6 @@ export const Mobile = [
     price: 1599,
     img: Images.iPhone7(),
     id: Math.random() * 1000,
+    quantity: 1,
   },
 ];

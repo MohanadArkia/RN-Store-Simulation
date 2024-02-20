@@ -8,10 +8,10 @@ import ScreenNames from '../../route/ScreenNames';
 import MyContext from '../store/MyContext';
 
 const MobileCard = props => {
-  const {brand, release, price, img, id} = props;
+  const {brand, release, price, img, id, quantity} = props;
 
   const navigation = useNavigation();
-  const {cart, setCart, setQuantity} = useContext(MyContext);
+  const {cart, setCart} = useContext(MyContext);
 
   const mobileCards = {
     brand: brand,
@@ -19,6 +19,7 @@ const MobileCard = props => {
     price: price,
     img: img,
     id: id,
+    quantity: quantity,
   };
 
   const onMobileCardPress = () => {
@@ -40,7 +41,7 @@ const MobileCard = props => {
 
   const onAddToCartPress = () => {
     checkIfExist()
-      ? setQuantity(prevQuantity => prevQuantity + 1)
+      ? console.log('Product already exist')
       : setCart(prevCart => [...prevCart, mobileCards]);
   };
 

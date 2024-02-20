@@ -8,9 +8,9 @@ import ScreenNames from '../../route/ScreenNames';
 import MyContext from '../store/MyContext';
 
 const PcCard = props => {
-  const {brand, cpu, ram, gpu, storage, price, img, id} = props;
+  const {brand, cpu, ram, gpu, storage, price, img, id, quantity} = props;
   const navigation = useNavigation();
-  const {cart, setCart, setQuantity} = useContext(MyContext);
+  const {cart, setCart} = useContext(MyContext);
 
   const pcCards = {
     brand: brand,
@@ -21,6 +21,7 @@ const PcCard = props => {
     price: price,
     img: img,
     id: id,
+    quantity: quantity,
   };
 
   const onPcCardPress = () => {
@@ -45,7 +46,7 @@ const PcCard = props => {
 
   const onAddToCartPress = () => {
     checkIfExist()
-      ? setQuantity(prevQuantity => prevQuantity + 1)
+      ? console.log('Product exist')
       : setCart(prevCart => [...prevCart, pcCards]);
   };
 
