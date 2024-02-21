@@ -6,7 +6,6 @@ import styles from '../styles/MyCartStyle';
 
 const CartItem = props => {
   const {item} = props;
-  const {quantity} = item;
   const {setCart, cart} = useContext(MyContext);
 
   const incrementQuantity = () => {
@@ -34,7 +33,7 @@ const CartItem = props => {
       <TouchableOpacity onPress={incrementQuantity}>
         <Text style={styles.quantityButton}>+</Text>
       </TouchableOpacity>
-      <Text style={styles.quantityText}>{quantity}</Text>
+      <Text style={styles.quantityText}>{item.quantity}</Text>
       <TouchableOpacity onPress={decrementQuantity}>
         <Text style={styles.quantityButton}>-</Text>
       </TouchableOpacity>

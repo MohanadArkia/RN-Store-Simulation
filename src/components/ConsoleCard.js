@@ -38,9 +38,17 @@ const ConsoleCard = props => {
   };
 
   const onAddToCartPress = () => {
-    checkIfExist()
-      ? console.log('Product exist')
-      : setCart(prevCart => [...prevCart, consoleCards]);
+    if (checkIfExist()) {
+      const updatedCart = cart.map(product => {
+        if (product.id === consoleCards.id) {
+          return {...product, quantity: (product.quantity || 1) + 1};
+        }
+        return product;
+      });
+      setCart(updatedCart);
+    } else {
+      setCart(prevCart => [...prevCart, consoleCards]);
+    }
   };
 
   return (
