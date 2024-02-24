@@ -9,6 +9,7 @@ import ContactScreen from '../src/screens/ContactScreen';
 import AboutScreen from '../src/screens/AboutScreen';
 import ProductInfoScreen from '../src/screens/ProductInfoScreen';
 import MyCartScreen from '../src/screens/MyCartScreen';
+import SplashScreen from '../src/screens/SplashScreen';
 
 const MainNavigation = () => {
   const Stack = createNativeStackNavigator();
@@ -16,6 +17,11 @@ const MainNavigation = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator>
+        <Stack.Screen
+          name={ScreenNames.Splash}
+          component={SplashScreen}
+          options={{headerShown: false}}
+        />
         <Stack.Screen name={ScreenNames.Home} component={HomeScreen} />
         <Stack.Screen name={ScreenNames.Contact} component={ContactScreen} />
         <Stack.Screen name={ScreenNames.About} component={AboutScreen} />

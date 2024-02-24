@@ -1,4 +1,5 @@
 const ScreenNames = {
+  Splash: 'Splash',
   Home: 'Home',
   About: 'About',
   Contact: 'Contact',
