@@ -1,13 +1,10 @@
-import {ScrollView, View, Text, TouchableOpacity, Button} from 'react-native';
+import {ScrollView, View, Text} from 'react-native';
 import React from 'react';
 
 import styles from '../styles/AppStyle';
 import PcStyles from '../styles/PcSectionStyle';
 import ConsoleStyles from '../styles/ConsolesSectionStyle';
 import MobileStyles from '../styles/MobileSectionStyle';
-import NavStyle from '../styles/NavigationStyle';
-
-import ScreenNames from '../../route/ScreenNames';
 
 import {
   renderComputers,
@@ -15,28 +12,10 @@ import {
   renderMobiles,
 } from '../utils/CardRenderer';
 
-const HomeScreen = props => {
-  const onContactPress = () => {
-    props.navigation.navigate(ScreenNames.Contact);
-  };
-
-  const onAboutPress = () => {
-    props.navigation.navigate(ScreenNames.About);
-  };
-
-  const onCartPress = () => {
-    props.navigation.navigate(ScreenNames.MyCart);
-  };
-
+const HomeScreen = () => {
   return (
     <View style={styles.container}>
-      <ScrollView>
-        <TouchableOpacity style={NavStyle.container}>
-          <Button title="Contact" onPress={onContactPress} />
-          <Button title="About" onPress={onAboutPress} />
-          <Button title="My Cart" onPress={onCartPress} />
-        </TouchableOpacity>
-
+      <ScrollView style={styles.myPaddingTop}>
         <Text style={PcStyles.sectionTitle}>Computers Section</Text>
         <ScrollView horizontal>{renderComputers()}</ScrollView>
 

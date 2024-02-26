@@ -6,11 +6,12 @@ const ProductInfoStyle = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'flex-start',
     flexDirection: 'column',
+    backgroundColor: '#323232',
   },
 
   productSpecs: {
     fontSize: 24,
-    color: '#000000',
+    color: '#ffffff',
     fontWeight: '500',
   },
 
@@ -19,6 +20,7 @@ const ProductInfoStyle = StyleSheet.create({
     height: 300,
     resizeMode: 'center',
     alignSelf: 'center',
+    backgroundColor: '#ffffff',
   },
 });
 

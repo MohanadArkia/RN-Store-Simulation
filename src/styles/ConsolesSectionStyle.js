@@ -5,37 +5,31 @@ const consoleCardStyle = StyleSheet.create({
     width: 320,
     height: 190,
     borderWidth: 2,
-    borderColor: '#ddd',
+    borderColor: '#666666',
     borderRadius: 8,
     padding: 16,
     margin: 10,
-    backgroundColor: 'white',
+    backgroundColor: '#1a1a1a',
   },
 
   title: {
     fontSize: 20,
-    color: '#000000',
+    color: '#ffffff',
     fontWeight: 'bold',
     marginBottom: 8,
   },
 
   text: {
-    color: '#000000',
+    color: '#ffffff',
     fontWeight: '500',
     fontSize: 18,
   },
 
   sectionTitle: {
     fontSize: 25,
-    color: '#000000',
+    color: '#F0EDCF',
     marginLeft: 10,
     marginTop: 15,
-  },
-
-  addProductPlus: {
-    fontSize: 30,
-    marginLeft: 220,
-    marginBottom: -22,
   },
 
   consoleImg: {

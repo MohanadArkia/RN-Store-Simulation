@@ -5,6 +5,7 @@ const ScreenNames = {
   Contact: 'Contact',
   ProductInfo: 'Product Info',
   MyCart: 'My Cart',
+  Tabs: 'Tabs',
 };
 
 export default ScreenNames;

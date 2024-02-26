@@ -24,7 +24,11 @@ const Images = {
   iPhone6: () => require('./mobiles/iphone/iphone6.jpeg'),
   iPhone7: () => require('./mobiles/iphone/iphone7.png'),
 
-  shoppingCart: () => require('./icons/shopping_cart.jpg'),
+  logo: () => require('./logo.jpg'),
+  homeIcon: () => require('./icons/home_icon.png'),
+  shoppingCartIcon: () => require('./icons/shopping_cart.png'),
+  aboutIcon: () => require('./icons/about_icon.png'),
+  contactIcon: () => require('./icons/contact_us.png'),
   trashIcon: () => require('./icons/trash_icon.png'),
 };
 

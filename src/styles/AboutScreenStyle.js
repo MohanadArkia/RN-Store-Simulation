@@ -2,12 +2,16 @@ import {StyleSheet} from 'react-native';
 
 const AboutScreenStyle = StyleSheet.create({
   container: {
+    flex: 1,
+    justifyContent: 'center',
     alignItems: 'center',
-    margin: 10,
+    backgroundColor: '#323232',
   },
 
   txt: {
     fontSize: 20,
+    color: '#ffffff',
+    marginLeft: 10,
   },
 });
 

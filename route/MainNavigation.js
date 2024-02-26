@@ -4,32 +4,22 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import ScreenNames from './ScreenNames';
 
-import HomeScreen from '../src/screens/HomeScreen';
-import ContactScreen from '../src/screens/ContactScreen';
-import AboutScreen from '../src/screens/AboutScreen';
 import ProductInfoScreen from '../src/screens/ProductInfoScreen';
-import MyCartScreen from '../src/screens/MyCartScreen';
 import SplashScreen from '../src/screens/SplashScreen';
+import BottomTabNavigator from './BottomTabNavigator';
 
 const MainNavigation = () => {
   const Stack = createNativeStackNavigator();
 
   return (
     <NavigationContainer>
-      <Stack.Navigator>
-        <Stack.Screen
-          name={ScreenNames.Splash}
-          component={SplashScreen}
-          options={{headerShown: false}}
-        />
-        <Stack.Screen name={ScreenNames.Home} component={HomeScreen} />
-        <Stack.Screen name={ScreenNames.Contact} component={ContactScreen} />
-        <Stack.Screen name={ScreenNames.About} component={AboutScreen} />
+      <Stack.Navigator screenOptions={{headerShown: false}}>
+        <Stack.Screen name={ScreenNames.Splash} component={SplashScreen} />
         <Stack.Screen
           name={ScreenNames.ProductInfo}
           component={ProductInfoScreen}
         />
-        <Stack.Screen name={ScreenNames.MyCart} component={MyCartScreen} />
+        <Stack.Screen name={ScreenNames.Tabs} component={BottomTabNavigator} />
       </Stack.Navigator>
     </NavigationContainer>
   );

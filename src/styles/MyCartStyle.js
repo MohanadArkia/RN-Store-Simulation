@@ -3,34 +3,37 @@ import {StyleSheet} from 'react-native';
 const MyCartStyle = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 20,
-    marginLeft: 5,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#323232',
   },
 
-  quantityContainer: {
+  emptyCartContainer: {
+    height: 710,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+
+  priceAndPayButtonContainer: {
+    justifyContent: 'center',
     alignItems: 'center',
   },
 
   imageContainer: {
     flexDirection: 'row',
     alignItems: 'center',
+    marginBottom: 20,
   },
 
-  emptyCartContainer: {
-    height: 550,
+  quantityContainer: {
     alignItems: 'center',
     justifyContent: 'center',
   },
 
-  priceAndPayButtonContainer: {
-    alignItems: 'center',
-  },
-
   txt: {
     fontSize: 17,
-    color: '#000000',
+    color: '#ffffff',
     fontWeight: '500',
-    marginBottom: 20,
     marginRight: 10,
   },
 
@@ -38,43 +41,48 @@ const MyCartStyle = StyleSheet.create({
     width: 80,
     height: 80,
     resizeMode: 'center',
+    backgroundColor: '#ffffff',
   },
 
   emptyCartText: {
     fontSize: 40,
     fontWeight: 'bold',
-    color: '#000000',
+    color: '#ffffff',
   },
 
   quantityButton: {
     fontSize: 30,
     fontWeight: 'bold',
-    color: '#000000',
+    color: '#ffffff',
   },
 
   quantityText: {
     fontSize: 20,
     fontWeight: 'bold',
-    color: '#000000',
+    color: '#ffffff',
   },
 
   priceText: {
-    color: '#000000',
+    color: '#ffffff',
     fontWeight: '500',
     fontSize: 25,
     marginTop: 25,
   },
 
   payButton: {
-    width: '50%',
+    width: 200,
     marginBottom: 25,
   },
 
   trashCanIcon: {
-    width: 30,
-    height: 30,
+    width: 50,
+    height: 50,
     resizeMode: 'contain',
-    marginLeft: 5,
+  },
+
+  cartIcon: {
+    width: 50,
+    height: 50,
   },
 });
 
